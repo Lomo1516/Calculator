@@ -1,8 +1,8 @@
 /*
  * File Name:		Calculator.cpp
- * Names:			Kevin Hinojo
- * Course:			COP 1000C at Valencia College
- * Professor:		David Stendel
+ * Names:			
+ * Course:			
+ * Professor:		
  * Description:		This program will create a Calculator for the user to control using intergers
  * Date:			9/18/20
  */
@@ -17,7 +17,7 @@ using namespace std;
  * Parameters:		None.
  * Processes:		This will display a playable calculator uisng two intergers.
  * Return Value:	An integer representing an error code; if the program ends without error, zero
- *					will be returned to the calling program or operating system.
+ *			will be returned to the calling program or operating system.
  */
 int main()
 {
