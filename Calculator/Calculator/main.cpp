@@ -178,6 +178,7 @@ int main()
 			//Error Message
 			default:
 				cout << "Error: Please select option G from the menu first!\n";
+				break;
 		}
 	//End of the Switch Statement
 	//Repeating until X or x is selected
