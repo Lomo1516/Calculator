@@ -1,12 +1,3 @@
-/*
- * File Name:		Calculator.cpp
- * Names:			Kevin Hinojo, Miguel Feliz, Derian Comas
- * Course:			COP 1000C at Valencia College
- * Professor:		David Stendel
- * Description:		This program will create a Calculator for the user to control using intergers
- * Date:			9/18/20
- */
-
 // Preprocessor Directives
 #include <iostream>
 #include <iomanip>
@@ -25,6 +16,8 @@ int main()
 	float firstNum = 0.0;
 	float secondNum = 0.0;
 	char userOption;
+	bool g_flag = false;
+	cout << fixed << setprecision (3);
 	
 	//Begnning of the Do-Loop
 	do
@@ -51,121 +44,124 @@ int main()
 	//Beginning of the Switch Statement
 		switch (userOption)
 		{
-				
 			//User's Input for the First and Second Number
 			case 'G':
 			case 'g':
+			//Calculation
 				cout << "Enter two numbers separated with a space: ";
 				cin >> firstNum >> secondNum;
+				g_flag = true;
 				break;
 				
 			//Addition
-			case 'A':
-			case 'a':
-				cout << fixed;
-				//Calculation
-				cout << "The sum is: " << setprecision (3) << firstNum + secondNum << ".\n";
-				break;
+            case 'A':
+            case 'a':
+				if (g_flag == false)
+				{
+					cout << "Error: Please select option G from the menu first!\n";
+				} else
+					cout << "The sum is: " << firstNum + secondNum << ".\n";
+			break;
 				
 			//Subtraction
 			case 'S':
 			case 's':
-				cout << fixed;
-				//Calculation
-				cout << "The difference is: " << setprecision (3) << firstNum - secondNum << ".\n";
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                } else
+                    cout << "The difference is: " << firstNum - secondNum << ".\n";
 				break;
 				
 			//Multiplication
 			case 'M':
 			case 'm':
-				cout << fixed;
-				//Calculation
-				cout << "The product is " << setprecision (3) << firstNum * secondNum << ".\n";
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                } else
+                    cout << "The product is " << firstNum * secondNum << ".\n";
 				break;
 				
 			//Division
 			case 'D':
 			case 'd':
-				cout << fixed;
-				//Calculation
-				if (firstNum == 0 || secondNum == 0)
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                } else if (firstNum == 0 || secondNum == 0)
 				{
 					cout << "Error: Cannot divide by zero!\n";
 				} else
-					cout << "The quotient is " << setprecision (3) << firstNum / secondNum << ".\n";
+					cout << "The quotient is " << firstNum / secondNum << ".\n";
 				break;
 				
 			//Average
 			case 'V':
 			case 'v':
-				cout << fixed;
-				//Calculation
-				cout << "The average is " << setprecision (3) << (firstNum + secondNum) / 2 << ".\n";
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                } else
+                    cout << "The average is " << (firstNum + secondNum) / 2 << ".\n";
 				break;
 				
 			//Largest
 			case 'L':
 			case 'l':
-				cout <<
-				fixed;
-				//Validation
-				if (firstNum > secondNum)
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                } else if (firstNum > secondNum)
 				{
-					cout << "The largest number is " << setprecision (3) << firstNum << ".\n";
+					cout << "The largest number is " << firstNum << ".\n";
 				} else
-					cout << "The largest number is " << setprecision (3) << secondNum << ".\n";
+					cout << "The largest number is " << secondNum << ".\n";
 				break;
 				
 			//Smallest
 			case 'E':
 			case 'e':
-				cout << fixed;
-				//Validation
-				if (firstNum < secondNum)
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                } else if (firstNum < secondNum)
 				{
-					cout << "The smallest number is " << setprecision (3) << firstNum << ".\n";
+					cout << "The smallest number is " << firstNum << ".\n";
 				} else
-					cout << "The smallest number is " << setprecision (3) << secondNum << ".\n";
+					cout << "The smallest number is " << secondNum << ".\n";
 				break;
 				
 			//Positive, Negative, Zero
 			case 'P':
 			case 'p':
-				cout << fixed;
-				
-				//Zero for first #
-				if (firstNum == 0)
-				{
-					cout << "The first number is zero." << "./n";
-				}
-				
-				//Positive for first #
-				else if (firstNum > 0)
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                //First Number
+                } else if (firstNum == 0)
+                {
+                    cout << "The first number is zero.\n";
+                } else if (firstNum > 0)
 					{
-						cout << "The first number (" << setprecision (3) << firstNum << ") is positive.\n";
-					}
-				
-				//Negative for first #
-					else
-						{
-						cout << "The first number (" << setprecision (3) << firstNum << ") is negative.\n";
-						}
-				
-				//Zero for second #
-				if (secondNum == 0)
+                    cout << "The first number (" << firstNum << ") is positive.\n";
+					} else
+                    {
+                    cout << "The first number (" << firstNum << ") is negative.\n";
+                    }
+				//Second Number
+                if (g_flag == false)
+                {
+                    cout << "Error: Please select option G from the menu first!\n";
+                } else if (secondNum == 0)
 				{
-					cout << "The second number is zero." << "./n";
-				}
-				
-				//Positive for second #
-				else if (secondNum > 0)
+					cout << "The second number is zero.\n";
+				} else if (secondNum > 0)
 					{
-						cout << "The second number (" << setprecision (3) << secondNum << ") is positive.\n";
-					}
-				
-				//Negative for second #
-					else {
-						cout << "The second number (" << setprecision (3) << secondNum << ") is negative.\n";
+                    cout << "The second number (" << secondNum << ") is positive.\n";
+					} else
+                    {
+                    cout << "The second number (" <<  secondNum << ") is negative.\n";
 					}
 				break;
 				
@@ -177,15 +173,10 @@ int main()
 				
 			//Error Message
 			default:
-				cout << "Error: Please select option G from the menu first!\n";
+				cout << "Error: Invalid choice!\n";
 				break;
 		}
-	//End of the Switch Statement
-	//Repeating until X or x is selected
 	} while (userOption != 'X' && userOption != 'x');
-	//End of the Do-Loop
-
-
 
 	return 0;
 }
