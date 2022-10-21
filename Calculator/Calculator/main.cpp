@@ -1,3 +1,12 @@
+/*
+ * File Name:		Calculator.cpp
+ * Names:			Kevin Hinojo, Miguel Feliz, Derian Comas
+ * Course:			COP 1000C at Valencia College
+ * Professor:		David Stendel
+ * Description:		This program will create a Calculator for the user to control using intergers
+ * Date:			9/18/20
+ */
+
 // Preprocessor Directives
 #include <iostream>
 #include <iomanip>
@@ -10,6 +19,7 @@ using namespace std;
  * Return Value:	An integer representing an error code; if the program ends without error, zero
  *					will be returned to the calling program or operating system.
  */
+
 int main()
 {
 	// Constants and Variables
