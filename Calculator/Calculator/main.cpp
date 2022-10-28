@@ -1,6 +1,6 @@
 /*
  * File Name:		Calculator.cpp
- * Names:			Kevin Hinojo, Miguel Feliz, Derian Comas
+ * Names:			Kevin Hinojo, Miguel Feliz, and Derian Comas.
  * Course:			COP 1000C at Valencia College
  * Professor:		David Stendel
  * Description:		This program will create a Calculator for the user to control using intergers
@@ -23,17 +23,21 @@ using namespace std;
  */
 int main()
 {
-	// Constants and Variables
-	float firstNum = 0.0;
-	float secondNum = 0.0;
-	char userOption;
-	bool g_flag = false;
+	// Constants and Variables]
+	const int COUNT = 2;
+	double firstNum = 0.0;
+	double secondNum = 0.0;
+	double answer = 0.0;
+	char userOption = '\0';
+	bool numbersGotten = false;
+
+	// Output - Formatting
 	cout << fixed << setprecision(3);
 
-	//Begnning of the Do-Loop
+	// Calculator
 	do
 	{
-		//Main Menu
+		// Input - Menu Choice
 		cout << "\nCalculator Menu\n\n";
 		cout << "(G)et two numbers.\n";
 		cout << "(A)dd.\n";
@@ -44,163 +48,247 @@ int main()
 		cout << "(L)argest.\n";
 		cout << "small(E)st.\n";
 		cout << "(P)ositive, negative, or zero.\n";
-		cout << "e(X)it.\n";
-		cout << "\nChoice: ";
+		cout << "e(X)it.\n\n";
+		cout << "Choice: ";
+		cin >> userOption ;
 
-		//User's Input for the Main Menu
-		cin >> userOption;
-		cout << "\n";
-
-		//Beginning of the Switch Statement
+		// Menu Choice - Processing
 		switch (userOption)
 		{
-			//User's Input for the First and Second Number
+		// New Numbers
 		case 'G':
 		case 'g':
-			//Calculation
-			cout << "Enter two numbers separated with a space: ";
+
+			// Validation
+			numbersGotten = true;
+
+			// Output
+			cout << "\nEnter two numbers separated with a space: ";
+
+			// Input
 			cin >> firstNum >> secondNum;
-			g_flag = true;
 			break;
 
-			//Addition
+		// Addition
 		case 'A':
 		case 'a':
-			//Validation
-			if (g_flag == false)
+			// Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
+				// Calculation
+				answer = firstNum + secondNum;
+
+				// Output
+				cout << "\nThe sum is: " << answer << ".\n";
 			}
 			else
-			//Calculation
-				cout << "The sum is: " << firstNum + secondNum << ".\n";
+			{
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
+			}
 			break;
 
-			//Subtraction
+		// Subtraction
 		case 'S':
 		case 's':
-			if (g_flag == false)
+			// Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
+				// Calculation
+				answer = firstNum - secondNum;
+
+				// Output
+				cout << "\nThe difference is: " << answer << ".\n";
 			}
 			else
-				cout << "The difference is: " << firstNum - secondNum << ".\n";
+			{
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
+			}
 			break;
 
-			//Multiplication
+		// Multiplication
 		case 'M':
 		case 'm':
-			if (g_flag == false)
+			// Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
+				// Calculation
+				answer = firstNum * secondNum;
+
+				// Output
+				cout << "\nThe product is " << answer << ".\n";
 			}
 			else
-				cout << "The product is " << firstNum * secondNum << ".\n";
+			{
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
+			}
 			break;
 
-			//Division
+		// Division
 		case 'D':
 		case 'd':
-			if (g_flag == false)
+			//Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
-			}
-			else if (firstNum == 0 || secondNum == 0)
-			{
-				cout << "    Error: Cannot divide by zero!\n";
+				if (secondNum != 0)
+				{
+					// Calculation
+					answer = firstNum / secondNum;
+
+					// Output
+					cout << "\nThe quotient is " << answer << ".\n";
+				}
+				else
+				{
+					// Error
+					cout << "\n\tError: Cannot divide by zero!\n";
+				}
 			}
 			else
-				cout << "The quotient is " << firstNum / secondNum << ".\n";
+			{
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
+			}
 			break;
 
-			//Average
+		// Average
 		case 'V':
 		case 'v':
-			if (g_flag == false)
+			// Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
+				// Calculation
+				answer = (firstNum + secondNum) / COUNT;
+
+				// Output
+				cout << "\nThe average is " << answer << ".\n";
 			}
 			else
-				cout << "The average is " << (firstNum + secondNum) / 2 << ".\n";
+			{
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
+			}
 			break;
 
-			//Largest
+		// Largest
 		case 'L':
 		case 'l':
-			if (g_flag == false)
+			// Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
-			}
-			else if (firstNum > secondNum)
-			{
-				cout << "The largest number is " << firstNum << ".\n";
+				if (firstNum > secondNum)
+				{
+					// Output - Largest First Number
+					cout << "\nThe largest number is " << firstNum << ".\n";
+				}
+				else
+				{
+					// Output - Largest Second Number
+					cout << "\nThe largest number is " << secondNum << ".\n";
+				}
+
 			}
 			else
-				cout << "The largest number is " << secondNum << ".\n";
+			{
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
+			}
 			break;
 
-			//Smallest
+		// Smallest
 		case 'E':
 		case 'e':
-			if (g_flag == false)
+			// Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
-			}
-			else if (firstNum < secondNum)
-			{
-				cout << "The smallest number is " << firstNum << ".\n";
+				if (firstNum < secondNum)
+				{
+					// Output - Smallest First Number
+					cout << "\nThe largest number is " << firstNum << ".\n";
+				}
+				else
+				{
+					// Output - Smallest Second Number
+					cout << "\nThe largest number is " << secondNum << ".\n";
+				}
+
 			}
 			else
-				cout << "The smallest number is " << secondNum << ".\n";
+			{
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
+			}
 			break;
 
-			//Positive, Negative, Zero
+		// Positive, Negative, and Zero
 		case 'P':
 		case 'p':
-			if (g_flag == false)
+			// Validation
+			if (numbersGotten == true)
 			{
-				cout << "	Error: Please select option G from the menu first!\n";
-				//First Number
-			}
-			else if (firstNum == 0)
-			{
-				cout << "The first number is zero.\n";
-			}
-			else if (firstNum > 0)
-			{
-				cout << "The first number (" << firstNum << ") is positive.\n";
-			}
-			else if (firstNum < 0)
-			{
-				cout << "The first number (" << firstNum << ") is negative.\n";
-			}
-			//Second Number
-			else if (secondNum == 0)
-			{
-				cout << "The second number is zero.\n";
-			}
-			else if (secondNum > 0)
-			{
-				cout << "The second number (" << secondNum << ") is positive.\n";
+				// Determination - First Number
+				if (firstNum > 0)
+				{
+					// Output - Positive
+					cout << "\nThe first number (" << firstNum << ") is positive.\n";
+				}
+				else
+				{
+					if (firstNum < 0)
+					{
+						// Output - Negative
+						cout << "\nThe first number (" << firstNum << ") is negative.\n";
+					}
+					else
+					{
+						// Output - Zero
+						cout << "\nThe first number is zero.\n";
+					}
+				}
+
+				// Determination - Second Number
+				if (secondNum > 0)
+				{
+					// Output - Positive
+					cout << "\nThe first number (" << secondNum << ") is positive.\n";
+				}
+				else
+				{
+					if (secondNum < 0)
+					{
+						// Output - Negative
+						cout << "\nThe first number (" << secondNum << ") is negative.\n";
+					}
+					else
+					{
+						// Output - Zero
+						cout << "\nThe first number is zero.\n";
+					}
+				}
 			}
 			else
 			{
-				cout << "The second number (" << secondNum << ") is negative.\n";
+				// Error
+				cout << "\n\tError: Please select option G from the menu first!\n";
 			}
 			break;
 
-			//Exit
+		// Exit
 		case 'X':
 		case 'x':
-			cout << "Thank you for using Team 4's calculator! Good-bye!\n";
+			// Output
+			cout << "\nThank you for using Team 4's calculator! Good-bye!\n";
 			break;
 
-			//Error Message
+		// Error Message
 		default:
-			cout << "	Error: Invalid choice!\n";
+			// Output
+			cout << "\n\tError: Invalid choice!\n";
 			break;
 		}
-	} while (userOption != 'X' && userOption != 'x');
+	} while (userOption != 'x' && userOption != 'X');
 
 	return 0;
 }
