@@ -1,10 +1,23 @@
 /*
  * File Name:		Calculator.cpp
- * Names:			Kevin Hinojo, Miguel Feliz, and Derian Comas.
+ * Names:			Kevin Hinojo, Miguel Feliz, and Derian Comas
  * Course:			COP 1000C at Valencia College
  * Professor:		David Stendel
- * Description:		This program will create a Calculator for the user to control using intergers
- * Date:			10/21/2022
+ * Description:		This will display a useable calculator that will allow the user to grab two
+					Integers and do the following options:
+					Option          Description
+					Get Numbers
+					Add Numbers
+					Subtract Numbers
+					Multiply Numbers
+					Divide Numbers
+					Find Average of Numbers
+					Determine Largest Number
+					Determine Smallest Number
+					Determine Positive, Negative, or Zero Number
+					Exit Program
+
+ * Date:			10/21/22
  */
 
 //Preprocessor Directives
@@ -15,9 +28,9 @@ using namespace std;
 /*
  * Name:			main()
  * Parameters:		None.
- * Processes:		This will display a useable calculator that will allow the user to grab two 
-                    Integers and Add, Subtract, Multiply, Divide, Average, Find the 
-                    Largest & Smallest numbers, As well as the Positive, Negative, or zero.
+ * Processes:		This will display a useable calculator that will allow the user to grab two
+					Integers and Add, Subtract, Multiply, Divide, Average, Find the
+					Largest & Smallest numbers, As well as the Positive, Negative, or zero.
  * Return Value:	An integer representing an error code; if the program ends without error, zero.
  *					will be returned to the calling program or operating system.
  */
