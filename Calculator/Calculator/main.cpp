@@ -1,307 +1,133 @@
-/*
- * File Name:		Calculator.cpp
- * Names:			Kevin Hinojo, Miguel Feliz, and Derian Comas
- * Course:			COP 1000C at Valencia College
- * Professor:		David Stendel
- * Description:		This will display a useable calculator that will allow the user to grab two
-					Integers and do the following options:
-					Option          Description
-					Get Numbers
-					Add Numbers
-					Subtract Numbers
-					Multiply Numbers
-					Divide Numbers
-					Find Average of Numbers
-					Determine Largest Number
-					Determine Smallest Number
-					Determine Positive, Negative, or Zero Number
-					Exit Program
-
- * Date:			10/21/22
+*
+ * File Name:        Replace this text with your file name.
+ * Names:            Replace this text with your first and last name, and anyone else involved.
+ * Course:            COP 1000C at Valencia College
+ * Professor:        David Stendel
+ * Description:        Replace this text; see the instructions in the Template.
+ * Date:            5/4/20
  */
 
-//Preprocessor Directives
+ // Preprocessor Directives
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
+// Prototypes
+char displayMenu()
+{
+
+    char userChoice = '\0';
+
+    cout << "\n\tCalculator Menu\n\n";
+    cout << "(N)ew Numbers.\n";
+    cout << "(S)um.\n";
+    cout << "(D)ifference.\n";
+    cout << "(P)roduct.\n";
+    cout << "(Q)uotient\n";
+    cout << "(A)verage.\n";
+    cout << "(M)aximum.\n";
+    cout << "m(I)nimum.\n";
+    cout << "p(O)sitive, Negative, or Zero.\n";
+    cout << "e(X)it.\n\n";
+    cout << "Choice: ";
+
+    cin >> userChoice;
+
+    return userChoice;
+}
+
+
+bool getNumbers(double userNumbers[], int size)
+{
+    int i;
+    cout << "\nEnter " << size << " numbers separated with spaces :";
+    for (i = 0; i < size; i++)
+    {
+        cin >> userNumbers[i];
+    }
+    return true;
+}
+
+double arraySum(double userNumbers[], int size)
+{
+    double sum = 0;
+    for (int i = 0; i < size; i++)
+    {
+        sum += userNumbers[i];
+    }
+    return sum;
+}
+
 /*
- * Name:			main()
- * Parameters:		None.
- * Processes:		This will display a useable calculator that will allow the user to grab two
-					Integers and Add, Subtract, Multiply, Divide, Average, Find the
-					Largest & Smallest numbers, As well as the Positive, Negative, or zero.
- * Return Value:	An integer representing an error code; if the program ends without error, zero.
- *					will be returned to the calling program or operating system.
+ * Name:            main()
+ * Parameters:        None.
+ * Processes:        Replace this text; see the instructions in the Template.
+ * Return Value:    An integer representing an error code; if the program ends without error, zero
+ *                    will be returned to the calling program or operating system.
  */
+
+
+
 int main()
 {
-	// Constants and Variables]
-	const int COUNT = 2;
-	double firstNum = 0.0;
-	double secondNum = 0.0;
-	double answer = 0.0;
-	char userOption = '\0';
-	bool numbersGotten = false;
+    // Constants and Variables
+    const int ARRAY_LENGTH = 3;
+    double usersInputs[ARRAY_LENGTH];
+    char userLetterChoice = '\0';
+    bool numbersRecieved = false;
+    int i;
 
-	// Output - Formatting
-	cout << fixed << setprecision(3);
+    cout << fixed << setprecision(3);
 
-	// Calculator
-	do
-	{
-		// Input - Menu Choice
-		cout << "\nCalculator Menu\n\n";
-		cout << "(G)et two numbers.\n";
-		cout << "(A)dd.\n";
-		cout << "(S)ubtract.\n";
-		cout << "(M)ultiply.\n";
-		cout << "(D)ivide.\n";
-		cout << "a(V)erage.\n";
-		cout << "(L)argest.\n";
-		cout << "small(E)st.\n";
-		cout << "(P)ositive, negative, or zero.\n";
-		cout << "e(X)it.\n\n";
-		cout << "Choice: ";
-		cin >> userOption ;
+    do
+    {
+        userLetterChoice = displayMenu();
 
-		// Menu Choice - Processing
-		switch (userOption)
-		{
-		// New Numbers
-		case 'G':
-		case 'g':
+        if (userLetterChoice == 'N' || userLetterChoice == 'n' || numbersRecieved)
+        {
+            switch (userLetterChoice)
+            {
+            case 'N':
+            case 'n':
+                getNumbers(usersInputs, ARRAY_LENGTH);
+                numbersRecieved = true;
+                break;
 
-			// Validation
-			numbersGotten = true;
+            case 'S':
+            case 's':
+                if (numbersRecieved == true)
+                {
+                    cout << "\nAnswer: ";
+                    for (i = 0; i < ARRAY_LENGTH; i++)
+                    {
+                        cout << usersInputs[i] << " + ";
+                    }
+                    cout << " = " << arraySum(usersInputs, ARRAY_LENGTH) << "\n";
+                }
+                else
+                {
+                    cout << "\n\tError: Please select option N from the menu first!\n";
+                }
+                break;
 
-			// Output
-			cout << "\nEnter two numbers separated with a space: ";
+            default:
+                cout << "\n\tError: Invalid choice!\n";
+                break;
 
-			// Input
-			cin >> firstNum >> secondNum;
-			break;
 
-		// Addition
-		case 'A':
-		case 'a':
-			// Validation
-			if (numbersGotten == true)
-			{
-				// Calculation
-				answer = firstNum + secondNum;
+            }
+        }
+        else if (userLetterChoice == 'X' || userLetterChoice == 'x')
+        {
+            cout << "\nThank you for using Team 4's calculator! Good-bye!\n";
+        }
+        else
+        {
+            cout << "\n\tError: Please select option N from the menu first!\n";
+        }
 
-				// Output
-				cout << "\nThe sum is: " << answer << ".\n";
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
+    } while (userLetterChoice != 'X' && userLetterChoice != 'x');
 
-		// Subtraction
-		case 'S':
-		case 's':
-			// Validation
-			if (numbersGotten == true)
-			{
-				// Calculation
-				answer = firstNum - secondNum;
-
-				// Output
-				cout << "\nThe difference is: " << answer << ".\n";
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
-
-		// Multiplication
-		case 'M':
-		case 'm':
-			// Validation
-			if (numbersGotten == true)
-			{
-				// Calculation
-				answer = firstNum * secondNum;
-
-				// Output
-				cout << "\nThe product is " << answer << ".\n";
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
-
-		// Division
-		case 'D':
-		case 'd':
-			//Validation
-			if (numbersGotten == true)
-			{
-				if (secondNum != 0)
-				{
-					// Calculation
-					answer = firstNum / secondNum;
-
-					// Output
-					cout << "\nThe quotient is " << answer << ".\n";
-				}
-				else
-				{
-					// Error
-					cout << "\n\tError: Cannot divide by zero!\n";
-				}
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
-
-		// Average
-		case 'V':
-		case 'v':
-			// Validation
-			if (numbersGotten == true)
-			{
-				// Calculation
-				answer = (firstNum + secondNum) / COUNT;
-
-				// Output
-				cout << "\nThe average is " << answer << ".\n";
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
-
-		// Largest
-		case 'L':
-		case 'l':
-			// Validation
-			if (numbersGotten == true)
-			{
-				if (firstNum > secondNum)
-				{
-					// Output - Largest First Number
-					cout << "\nThe largest number is " << firstNum << ".\n";
-				}
-				else
-				{
-					// Output - Largest Second Number
-					cout << "\nThe largest number is " << secondNum << ".\n";
-				}
-
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
-
-		// Smallest
-		case 'E':
-		case 'e':
-			// Validation
-			if (numbersGotten == true)
-			{
-				if (firstNum < secondNum)
-				{
-					// Output - Smallest First Number
-					cout << "\nThe largest number is " << firstNum << ".\n";
-				}
-				else
-				{
-					// Output - Smallest Second Number
-					cout << "\nThe largest number is " << secondNum << ".\n";
-				}
-
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
-
-		// Positive, Negative, and Zero
-		case 'P':
-		case 'p':
-			// Validation
-			if (numbersGotten == true)
-			{
-				// Determination - First Number
-				if (firstNum > 0)
-				{
-					// Output - Positive
-					cout << "\nThe first number (" << firstNum << ") is positive.\n";
-				}
-				else
-				{
-					if (firstNum < 0)
-					{
-						// Output - Negative
-						cout << "\nThe first number (" << firstNum << ") is negative.\n";
-					}
-					else
-					{
-						// Output - Zero
-						cout << "\nThe first number is zero.\n";
-					}
-				}
-
-				// Determination - Second Number
-				if (secondNum > 0)
-				{
-					// Output - Positive
-					cout << "\nThe first number (" << secondNum << ") is positive.\n";
-				}
-				else
-				{
-					if (secondNum < 0)
-					{
-						// Output - Negative
-						cout << "\nThe first number (" << secondNum << ") is negative.\n";
-					}
-					else
-					{
-						// Output - Zero
-						cout << "\nThe first number is zero.\n";
-					}
-				}
-			}
-			else
-			{
-				// Error
-				cout << "\n\tError: Please select option G from the menu first!\n";
-			}
-			break;
-
-		// Exit
-		case 'X':
-		case 'x':
-			// Output
-			cout << "\nThank you for using Team 4's calculator! Good-bye!\n";
-			break;
-
-		// Error Message
-		default:
-			// Output
-			cout << "\n\tError: Invalid choice!\n";
-			break;
-		}
-	} while (userOption != 'x' && userOption != 'X');
-
-	return 0;
+    return 0;
 }
+
