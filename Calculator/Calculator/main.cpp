@@ -1,10 +1,14 @@
 /*
- * File Name:		Replace this text with your file name.
- * Names:			Replace this text with your first and last name, and anyone else involved.
+ * File Name:		
+ * Names:			Kevin Hinojo, Miguel Feliz, Derian Comas
  * Course:			COP 1000C at Valencia College
  * Professor:		David Stendel
- * Description:		Replace this text; see the instructions in the Template.
- * Date:			5/4/20
+ * Description:		With this Program you are allowed to gather numbers and use them within a
+ *                  functioning calculator that allows you to Add, Subtract, Multiply, Divide,
+ *                  find the average, as well as display the Max or Min between a few numbers.
+ *                  It also allows for you to determin if the numbers inputed were Positive,
+					Negative, or Zero.
+ * Date:			12/4/22
  */
 
  // Preprocessor Directives
@@ -25,21 +29,24 @@ double add(double userInputs[], int size)
 	}
 	return sum;
 }
-
+// Prototypes
 double average(double userInputs[], int size)
 {
+	// Calculations
 	double answer = add(userInputs, size) / size;
 	return answer;
 }
-
-double detectingValues(double userInputs[], int size)
+// Detecting 
+void detectingValues(double userInputs[], int size)
 {
+	// Variables
 	double positive = 0.0;
 	double negative = 0.0;
 	double zero = 0.0;
 
-	for (int i = 0; size < i; i++)
+	for (int i = 0; size > i; i++)
 	{
+		// Input - Postive
 		if (userInputs[i] > 0.0)
 		{
 			positive = userInputs[i];
@@ -48,6 +55,7 @@ double detectingValues(double userInputs[], int size)
 		}
 		else
 		{
+			// Input - Negative
 			if (userInputs[i] < 0.0)
 			{
 				negative = userInputs[i];
@@ -56,20 +64,23 @@ double detectingValues(double userInputs[], int size)
 			}
 			else
 			{
+				// Input - Zero
 				zero = userInputs[i];
 				cout << "The number " << zero << ", which is in position "
 					<< i + 1 << ", is zero.\n";
 			}
 		}
 	}
-	return positive, negative, zero;
 }
-
+// Detecting for zero
 bool detection(double userInputs[], int size)
 {
+	// Variables
 	bool detectedZero = false;
+
 	for (int i = 1; i < size; i++)
 	{
+		// Input
 		if (userInputs[i] == 0)
 		{
 			detectedZero = true;
@@ -78,22 +89,10 @@ bool detection(double userInputs[], int size)
 
 	return detectedZero;
 }
-
-double subtraction(double userInputs[], int size)
-{
-	// Variables
-	double subtraction = userInputs[0];
-
-	// Calculations
-	for (int i = 1; i < size; i++)
-	{
-		subtraction -= userInputs[i];
-	}
-	return subtraction;
-}
-
+// Display
 void displayAnswer(double userInputs[], int size, char signOperator, double answer)
 {
+	// Output
 	cout << "\nAnswer: " << userInputs[0];
 	for (int i = 1; i < size; i++)
 	{
@@ -101,9 +100,10 @@ void displayAnswer(double userInputs[], int size, char signOperator, double answ
 	}
 	cout << " = " << answer << "\n";
 }
-
+// Display
 void displayAverage(double userInputs[], int size, char signOperator, double answer)
 {
+	// Ouput
 	cout << "\nAnswer: (" << userInputs[0];
 	for (int i = 1; i < size; i++)
 	{
@@ -111,17 +111,19 @@ void displayAverage(double userInputs[], int size, char signOperator, double ans
 	}
 	cout << ") / " << size << " = " << answer << "\n";
 }
-
+// Display
 void displayMax(double answer)
 {
+	// Output
 	cout << "\nThe largest number is " << answer << ".\n";
 }
-
+// Display
 void displayMin(double answer)
 {
+	// Output
 	cout << "\nThe smallest number is " << answer << ".\n";
 }
-
+// Prototypes
 double division(double userInputs[], int size)
 {
 	// Variables
@@ -134,46 +136,49 @@ double division(double userInputs[], int size)
 	}
 	return quotient;
 }
-
+// Main menu
 char getChoice()
 {
-
 	char userChoice = '\0';
-
+	// Output
 	cout << "\n\tCalculator Menu\n\n";
-	cout << "(N)ew Numbers.\n";
-	cout << "(S)um.\n";
-	cout << "(D)ifference.\n";
-	cout << "(P)roduct.\n";
+	cout << "(N)ew Numbers\n";
+	cout << "(S)um\n";
+	cout << "(D)ifference\n";
+	cout << "(P)roduct\n";
 	cout << "(Q)uotient\n";
-	cout << "(A)verage.\n";
-	cout << "(M)aximum.\n";
-	cout << "m(I)nimum.\n";
-	cout << "p(O)sitive, Negative, or Zero.\n";
-	cout << "e(X)it.\n\n";
+	cout << "(A)verage\n";
+	cout << "(M)aximum\n";
+	cout << "m(I)nimum\n";
+	cout << "p(O)sitive, Negative, or Zero\n";
+	cout << "e(X)it\n\n";
 	cout << "Choice: ";
 
+	// Input
 	cin >> userChoice;
 
 	return userChoice;
 }
-
+// Getting user numbers
 bool getNumbers(double userInputs[], int size)
 {
-	// Input
+	// Output
 	cout << "\nEnter " << size << " numbers separated with spaces :";
 	for (int i = 0; i < size; i++)
 	{
+		// Input 
 		cin >> userInputs[i];
 	}
 	return true;
 }
-
+// Prototypes
 double maxNumber(double userInputs[], int size)
 {
+	// Variables
 	double max = userInputs[0];
 	for (int i = 1; i < size; i++)
 	{
+		// Input
 		if (userInputs[i] > max)
 		{
 			max = userInputs[i];
@@ -181,20 +186,22 @@ double maxNumber(double userInputs[], int size)
 	}
 	return max;
 }
-
+// Prototypes
 double minNumber(double userInputs[], int size)
 {
+	// Variables 
 	double min = userInputs[0];
 	for (int i = 1; i < size; i++)
 	{
+		// Input
 		if (userInputs[i] < min)
 		{
-			 min = userInputs[i];
+			min = userInputs[i];
 		}
 	}
 	return min;
 }
-
+// Prototypes
 double multiplication(double userInputs[], int size)
 {
 	// Variables
@@ -207,7 +214,7 @@ double multiplication(double userInputs[], int size)
 	}
 	return mulitplation;
 }
-
+// Process choice
 double processChoice(char letterChoice, double userInputs[], int size, bool numbersRecieved)
 {
 	// Variable
@@ -216,15 +223,15 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 	switch (letterChoice)
 	{
 
-	// New Numbers
+		// New Numbers
 	case 'N':
 	case 'n':
-		
+
 		// Inputs
 		numbersRecieved = getNumbers(userInputs, size);
 		break;
 
-	// Addition
+		// Addition
 	case 'S':
 	case 's':
 		if (numbersRecieved == true)
@@ -243,7 +250,7 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 		}
 		break;
 
-	// Difference
+		// Difference
 	case 'D':
 	case 'd':
 		if (numbersRecieved == true)
@@ -262,7 +269,7 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 		}
 		break;
 
-	// Product
+		// Product
 	case 'P':
 	case 'p':
 		if (numbersRecieved == true)
@@ -281,13 +288,13 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 		}
 		break;
 
-	// Quotient 
+		// Quotient 
 	case 'Q':
 	case 'q':
 		if (numbersRecieved == true)
 		{
-			if(detection(userInputs, size) != true)
-			{ 
+			if (detection(userInputs, size) != true)
+			{
 				// Calculations
 				answer = division(userInputs, size);
 
@@ -296,9 +303,10 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 			}
 			else
 			{
+				// Error Message
 				cout << "\n\tError: Cannot divide by zero!\n";
 			}
-			
+
 		}
 		else
 		{
@@ -306,8 +314,8 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 			cout << "\n\tError: Please select option N from the menu first!\n";
 		}
 		break;
-	
-	// Average
+
+		// Average
 	case 'A':
 	case 'a':
 		if (numbersRecieved == true)
@@ -326,7 +334,7 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 		}
 		break;
 
-	// Maximum
+		// Maximum
 	case 'M':
 	case 'm':
 		if (numbersRecieved == true)
@@ -344,7 +352,7 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 		}
 		break;
 
-	// Minimum
+		// Minimum
 	case 'I':
 	case 'i':
 		if (numbersRecieved == true)
@@ -362,16 +370,14 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 		}
 		break;
 
-	// Positive, Negative, or Zero
+		// Positive, Negative, or Zero
 	case 'O':
 	case 'o':
 		if (numbersRecieved == true)
 		{
-			// Calculations
-			answer = minNumber(userInputs, size);
-
-			// Output 
-			displayMin(answer);
+			// Output
+			cout << "\n";
+			detectingValues(userInputs, size);
 		}
 		else
 		{
@@ -380,27 +386,45 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 		}
 		break;
 
-	// Exit
+		// Exit
 	case 'X':
 	case 'x':
 		cout << "\nThank you for using Team's 4 calculator! Good-bye!";
 		break;
 
-	// Error Message
+		// Error Message
 	default:
 
 		// Output
 		cout << "\n\tError: Invalid choice!\n";
 		break;
 	}
-		return numbersRecieved;
+	return numbersRecieved;
 }
+// Prototypes
+double subtraction(double userInputs[], int size)
+{
+	// Variables
+	double subtraction = userInputs[0];
+
+	// Calculations
+	for (int i = 1; i < size; i++)
+	{
+		subtraction -= userInputs[i];
+	}
+	return subtraction;
+}
+
 
 
 /*
  * Name:			main()
  * Parameters:		None.
- * Processes:		Replace this text; see the instructions in the Template.
+ * Processes:		With this Program you are allowed to gather numbers and use them within a
+ *                  functioning calculator that allows you to Add, Subtract, Multiply, Divide,
+ *                  find the average, as well as display the Max or Min between a few numbers.
+ *                  It also allows for you to determin if the numbers inputed were Positive,
+					Negative, or Zero.
  * Return Value:	An integer representing an error code; if the program ends without error, zero
  *					will be returned to the calling program or operating system.
  */
@@ -410,11 +434,11 @@ double processChoice(char letterChoice, double userInputs[], int size, bool numb
 int main()
 {
 	// Constants and Variables
-	const int ARRAY_LENGTH = 5;
+	const int ARRAY_LENGTH = 3;
 	double usersInputs[ARRAY_LENGTH] = { 0,0 };
 	char userLetterChoice = '\0';
 	bool numbersRecieved = false;
-	
+
 	// Formatting 
 	cout << fixed << setprecision(3);
 
